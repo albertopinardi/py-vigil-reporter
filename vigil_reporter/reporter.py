@@ -87,7 +87,7 @@ class VigilReporter(object):
         """
         Returns the fully build endpoint url for vigil.
         """
-        url = "%s/reporter/%s/%s/" % (self.url, self.probe_id, self.node_id)
+        url = "%s/%s/%s/" % (self.url, self.probe_id, self.node_id)
         return url
 
     def stop(self):
