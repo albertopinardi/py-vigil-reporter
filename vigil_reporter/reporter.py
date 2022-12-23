@@ -106,8 +106,9 @@ class VigilReporter(object):
     def _make_request(self, data: typing.Dict) -> requests.Response:
         return requests.post(
             url=self.endpoint_url,
-            auth=('Authorization', self.token),
+            auth=('', self.token),
             json=data,
+            headers={'Content-Type': 'application/json; charset=utf-8', 'User-Agent': 'node-crisp-status-reporter/1.2.1'}
         )
 
     def _post_data(self, data: typing.Dict) -> typing.Optional[requests.Response]:
@@ -128,7 +129,7 @@ class VigilReporter(object):
 
     def build_report_payload(self, cpu: float, mem: float) -> typing.Dict:
         data = {
-            "replica": self.replica_id,
+            "replica_id": self.replica_id,
             "interval": self.interval,
             "load": {
                 "cpu": cpu,
